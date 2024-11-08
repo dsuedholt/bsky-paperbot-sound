@@ -1,13 +1,15 @@
-# bsky_paperbot
+# bsky-paperbot-sound
 
-sourcecode for paper poster bot. Bot on bluesky that pings arxiv rss feeds and posts them on bluesky. Querier + archiver may be of independent interest.
+pings arxiv rss feeds and posts them on bluesky. powering https://bsky.app/profile/arxiv-sound.bsky.social
+
+forked from [bsky-paperbot](https://github.com/apoorvalal/bsky_paperbot), with some modifications:
+- simply post all papers with announce-type 'new' once per day, no logging / archive required
+- use `atproto` library to access bluesky api
+- add an embed card with title and author information
 
 ## make your own bsky bot 
 
-+ fork this repository
++ fork this repository (or the original [bsky-paperbot](https://github.com/apoorvalal/bsky_paperbot))
 + create a bluesky account 
 + get a bluesky password / username, and set them in `Settings > Secrets and Variables > BSKYBOT, BSKYPWD`
-+ use different RSS feeds, or do something else 
-
-
-[![GH Arxiv Posterbot](https://github.com/apoorvalal/bsky_paperbot/actions/workflows/post.yml/badge.svg?branch=master)](https://github.com/apoorvalal/bsky_paperbot/actions/workflows/post.yml)
++ use different RSS feeds, or do something else
