@@ -23,3 +23,7 @@ jobs:
 
       - name: Run script
         run: uv run paperbot.py
+        env:
+          BSKYBOT: ${{ secrets.BSKYBOT }}
+          BSKYPWD: ${{ secrets.BSKYPWD }}
+          GEMINI_KEY: ${{ secrets.GEMINI_KEY }}
