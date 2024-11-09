@@ -7,5 +7,6 @@ dependencies = [
     "atproto~=0.0.55",
     "feedparser",
     "pylatexenc",
-    "beautifulsoup4"
+    "beautifulsoup4",
+    "google-generativeai"
 ]
