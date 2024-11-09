@@ -4,6 +4,7 @@ Script to post new articles from a daily arxiv paper feed. Bring your own handle
 
 import os
 import time
+from datetime import datetime
 
 import google.generativeai
 from bs4 import BeautifulSoup
@@ -106,13 +107,21 @@ def main():
     else:
         print(f"Found {len(entries)} new entries")
 
-    bsky_client = Client()
-    bsky_client.login(os.environ["BSKYBOT"], os.environ["BSKYPWD"])
-
+    print("Calling Gemini to get shortened abstracts")
     shorten_abstracts(entries)
 
+    # post entries over the course of ~5 hours
+    interval = 5 * 60 * 60 / len(entries)
+
+    print(f"Posting one entry every {interval / 60:.1f} minutes")
+
+    bsky_client = Client()
+
     for entry in entries:
-        print(f"Posting {entry.link}")
+        print(datetime.now().strftime("%H:%M"), f"Posting {entry.link}")
+
+        # login every time to avoid session timeout
+        bsky_client.login(os.environ["BSKYBOT"], os.environ["BSKYPWD"])
 
         bsky_client.send_post(
             entry.abstract,
@@ -124,7 +133,7 @@ def main():
                 )
             ),
         )
-        time.sleep(1)
+        time.sleep(interval)
 
 
 if __name__ == "__main__":
