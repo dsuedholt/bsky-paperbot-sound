@@ -6,6 +6,7 @@ forked from [bsky-paperbot](https://github.com/apoorvalal/bsky_paperbot), with s
 - simply post all papers with announce-type 'new' once per day, no logging / archive required
 - use `atproto` library to access bluesky api
 - add an embed card with title and author information
+- use the free Gemini API to summarize the abstract to fit the bluesky character limit
 
 ## make your own bsky bot 
 
