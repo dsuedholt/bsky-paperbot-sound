@@ -60,7 +60,7 @@ def shorten_abstracts(entries: list[ArxivEntry]) -> None:
     genai.configure(api_key=os.environ["GEMINI_KEY"])
 
     model = genai.GenerativeModel(
-        "gemini-1.5-flash",
+        "gemini-2.0-flash",
         generation_config=google.generativeai.GenerationConfig(temperature=0.0),
     )
 
